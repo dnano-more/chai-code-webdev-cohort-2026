@@ -37,7 +37,14 @@ Follow these steps to run the project locally:
 - Practice semantic HTML and proper document structure
 
 ## 🔗 Live Demo
+[![View Resume](https://img.shields.io/badge/Resume-Open-green)](https://dnano-resume-page.vercel.app/)
+
+https://dnano-resume-page.vercel.app/
 
 ## 📸 Screenshot
 
 ![Resume Page Screenshot](./assets/127.0.0.1_5500_Assignments_01_Resume_Page_index.html%20(3).png)
+
+## 📌 Status
+
+Completed ✅
