@@ -1,0 +1,80 @@
+body {
+    background-color: #121212;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.parent {
+    display: grid;
+    margin: 40px;
+
+    /* grid-template-rows: 100px 100px 100px;
+    grid-template-columns: 100px 100px 100px 100px; */
+    
+    /* If multipe rows and columns are to write you can use formula*/
+    /* grid-template-rows: repeat(3, 100px);
+    grid-template-columns: repeat(4, 100px); */
+
+    /* grid-template-columns: 50px repeat(2, 150px) 50px; 
+    grid-template-rows: repeat(3, 150px) 250px 50px;    */
+    
+    grid-template-columns: 1fr 1fr 1fr;  /* it means 3 hiso me baat do, responsive banao*/
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+
+    /* row-gap: 10px;
+    column-gap: 10px; */
+    gap: 10px;
+}
+
+.child {
+    background-color: green;
+    border: 2px solid orange;
+    color: #FFF;
+    height: 100px;
+
+    /* margin: 5px;   */
+    /* margin collapse grid, flexbox, display-absolute me work nahi karta   */
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+} 
+
+.child-12 {
+    grid-row-start: 4;
+    grid-row-end: 5;
+    grid-column-start: 3;
+    grid-column-end: 5;
+}
+
+.child-14 {
+    grid-column-start: 1;
+    grid-column-end: 3;
+}
+
+.child-13 {
+    grid-column-start: 1;
+    grid-column-end: -1;  /* last column line */
+    grid-column-end: -2;  /* second last column line */
+}
+
+.child-14 {
+    /* grid-row-start: -2;
+    grid-row-end: -1; */
+
+    /* shorthand for start and end */
+    /*       start/end */
+    grid-row: -2 / -1;  
+}
+
+.child-12 {
+
+    /* shorthand for grid rows and columns  */
+    /* grid-area: row-start / column-start / row-end / column-end; */
+
+    grid-area: 4 / 1 / 5 / -1;
+}
+
+.child-11 {
+    grid-area: 2 / 5 / span 2 / span 2;
+}
