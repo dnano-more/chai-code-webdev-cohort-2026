@@ -1,0 +1,147 @@
+:root {
+  --bg-color: #14120b;
+  --text-color: #ededec;
+  --nav-link-hover-color: #edececd7;
+  --all-button-bg-color: #ededec;
+  --all-button-hover-color: #d7d6d5;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* reuse code  */
+.logo,
+.signup-btn,
+.all-btns,
+.big-btns {
+  cursor: pointer;
+}
+
+body {
+  background-color: var(--bg-color);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  /* width: 100vw; */
+}
+
+.wrapper {
+  max-width: 85vw;
+  margin: 0 auto;
+  height: auto;
+}
+
+/* navbar section start  */
+.nav-container {
+  height: 8vh;
+  padding: 1.5rem 0;
+  background-color: var(--bg-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+img[src*="favicon_Copy.jpg"] {
+  width: 2rem;
+  border-radius: 50%;
+}
+
+img[src*="Cursor_Logo_4.png"] {
+  width: 4.5rem;
+}
+
+.nav-links ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  li {
+    list-style-type: none;
+    padding: 0 1.2vw;
+
+    a {
+      text-decoration: none;
+      color: var(--text-color);
+    }
+
+    a:hover {
+      color: var(--nav-link-hover-color);
+    }
+  }
+}
+
+.primary-cta {
+  display: flex;
+  gap: 10px;
+}
+
+.signup-btn,
+.all-btns {
+  padding: 5px 10px;
+  border: 1px solid #edecec57;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  border-radius: 25px;
+}
+
+.primary-cta .signup-btn:hover {
+  background-color: #1b1913;
+}
+
+.all-btns {
+  background-color: var(--all-button-bg-color);
+  color: #14120b;
+  font-weight: 600;
+}
+
+.primary-cta .all-btns:hover {
+  background-color: var(--all-button-hover-color);
+}
+
+/* hero-section start */
+.hero-section {
+  padding: 6rem 0;
+}
+
+h1 {
+  color: var(--text-color);
+  font-size: 1.625rem;
+  margin-bottom: 1.55rem;
+}
+
+.btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  margin-bottom: 4em;
+}
+
+.big-btns {
+  background-color: var(--all-button-bg-color);
+  color: var(--bg-color);
+  padding: 0.7em 1.4em;
+  font-size: 1em;
+  font-weight: 600;
+  border-radius: 3em;
+  border: none;
+
+  i {
+    font-size: 18px;
+    padding-left: 0.2em;
+  }
+}
+
+.btn .big-btns:hover {
+  background-color: var(--all-button-hover-color);
+}
+
+.productImG img {
+  width: 100%;
+}
