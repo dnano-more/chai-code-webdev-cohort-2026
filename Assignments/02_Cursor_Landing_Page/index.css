@@ -1,7 +1,9 @@
 :root {
   --bg-color: #14120b;
+  --bg2-color: #1b1913;
   --text-color: #ededec;
   --nav-link-hover-color: #edececd7;
+  --all-button-text-color: #14120b;
   --all-button-bg-color: #ededec;
   --all-button-hover-color: #d7d6d5;
 }
@@ -34,6 +36,8 @@ body {
 
 /* navbar section start  */
 .nav-container {
+  position: fixed;
+  width: 85vw;
   height: 8vh;
   padding: 1.5rem 0;
   background-color: var(--bg-color);
@@ -97,7 +101,7 @@ img[src*="Cursor_Logo_4.png"] {
 
 .all-btns {
   background-color: var(--all-button-bg-color);
-  color: #14120b;
+  color: var(--all-button-text-color);
   font-weight: 600;
 }
 
@@ -107,7 +111,7 @@ img[src*="Cursor_Logo_4.png"] {
 
 /* hero-section start */
 .hero-section {
-  padding: 6rem 0;
+  padding: 10rem 0 6rem;
 }
 
 h1 {
@@ -125,7 +129,7 @@ h1 {
 
 .big-btns {
   background-color: var(--all-button-bg-color);
-  color: var(--bg-color);
+  color: var(--all-button-text-color);
   padding: 0.7em 1.4em;
   font-size: 1em;
   font-weight: 600;
@@ -144,4 +148,39 @@ h1 {
 
 .productImG img {
   width: 100%;
+}
+
+
+/* company-logo section  */
+.companies p {
+    width: 100%;
+    text-align: center;
+    font-size: .9em;
+    color: var(--text-color);
+    margin-bottom: 1.7em;
+}
+
+.logo-container {
+    width: 100%;
+    display: flex;
+    gap: .5rem;
+}
+
+.comp-logo {
+    background-color: var(--bg2-color);
+    border-radius: 5px;
+    width: 200px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    flex-basis: auto;
+    img {
+        height: 3rem;
+    }
+}
+
+.companies {
+  padding-bottom: 2.5rem;
 }
