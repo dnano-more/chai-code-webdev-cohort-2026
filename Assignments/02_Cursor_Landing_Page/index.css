@@ -18,7 +18,8 @@
 .logo,
 .signup-btn,
 .all-btns,
-.big-btns {
+.big-btns,
+.info-div {
   cursor: pointer;
 }
 
@@ -34,7 +35,7 @@ body {
   height: auto;
 }
 
-/* navbar section start  */
+/******************* navbar section start  *********************/
 .nav-container {
   position: fixed;
   width: 85vw;
@@ -109,7 +110,7 @@ img[src*="Cursor_Logo_4.png"] {
   background-color: var(--all-button-hover-color);
 }
 
-/* hero-section start */
+/**************** hero-section start ********************/
 .hero-section {
   padding: 10rem 0 6rem;
 }
@@ -150,37 +151,166 @@ h1 {
   width: 100%;
 }
 
-
-/* company-logo section  */
+/********************* company-logo section  *********************/
 .companies p {
-    width: 100%;
-    text-align: center;
-    font-size: .9em;
-    color: var(--text-color);
-    margin-bottom: 1.7em;
+  width: 100%;
+  text-align: center;
+  font-size: 0.9em;
+  color: var(--text-color);
+  margin-bottom: 1.7em;
 }
 
 .logo-container {
-    width: 100%;
-    display: flex;
-    gap: .5rem;
+  width: 100%;
+  display: flex;
+  gap: 0.5rem;
 }
 
 .comp-logo {
-    background-color: var(--bg2-color);
-    border-radius: 5px;
-    width: 200px;
-    height: 100px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  background-color: var(--bg2-color);
+  border-radius: 5px;
+  width: 200px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-    flex-basis: auto;
-    img {
-        height: 3rem;
-    }
+  flex-basis: auto;
+  img {
+    height: 3rem;
+  }
 }
 
 .companies {
   padding-bottom: 2.5rem;
+}
+
+/*********** features section  *******************/
+.features {
+  margin: 6rem 0 6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+}
+
+.feature-blocks {
+  background-color: var(--bg2-color);
+  padding: 1rem;
+  border-radius: 5px;
+  display: flex;
+  gap: 1.6rem;
+}
+
+.info-div {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.feature-Img img {
+  width: 100%;
+  border-radius: 5px;
+}
+
+.info-div p {
+  font-size: 1.37rem;
+  font-weight: 400;
+}
+
+.info-div p:first-child {
+  color: var(--text-color);
+}
+
+.info-div p:nth-child(2) {
+  color: #ededec6a;
+}
+
+.info-div a {
+  text-decoration: none;
+  color: #f54e00;
+  margin: 1rem 0;
+
+  /* i {
+    font-weight: 300;
+  } */
+}
+
+.info-div a:hover {
+  color: #f54e00d3;
+}
+
+.feature-blocks:hover {
+  background-color: #1d1b15;
+}
+
+.feature-2 {
+  flex-direction: row-reverse;
+  gap: 2rem;
+}
+
+/********* testimonial section start  *************/
+.testimonials {
+  width: 100%;
+  padding: 2.5rem 0;
+}
+
+.testimonials h2 {
+  text-align: center;
+  color: var(--text-color);
+  font-size: 2.2em;
+  font-weight: 500;
+  margin-bottom: 1.6em;
+}
+
+.quote-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 0.6rem;
+}
+
+.quote {
+  background-color: var(--bg2-color);
+  border-radius: 5px;
+  height: 35vh;
+  padding: 1.4rem 1.2rem;
+  border: 1px solid #edecec07;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+blockquote {
+  height: 55%;
+}
+
+blockquote p {
+  color: var(--text-color);
+  height: 100%;
+  font-size: 1em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* blockquote {
+  height: 70vh;
+} */
+
+.person {
+  display: flex;
+  gap: .6rem;
+}
+
+.person img {
+  width: 40px;
+  height: 40px;
+  border-radius: 5px;
+}
+
+.name{
+  color: var(--text-color);
+}
+
+.role {
+  color: #ededec6a;
 }
