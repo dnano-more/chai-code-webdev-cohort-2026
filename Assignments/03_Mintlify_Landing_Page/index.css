@@ -24,18 +24,11 @@ body {
   font-family: "InterVariable", system-ui, sans-serif;
   background-color: #08090a;
   color: var(--text);
-}
-
-/*************** header start ******************/
-#header {
-  width: 100%;
   background-image: url(./assets/bg-dark.svg);
   background-repeat: no-repeat;
   background-size: 100%;
-  height: 100%;
 }
 
-nav,
 .hero,
 .trusted,
 .feat-highlight,
@@ -50,17 +43,23 @@ nav,
   margin: 0 auto;
 }
 
-.navbar {
-  height: 8vh;
+/*************** header start ******************/
+#header {
+  width: 100%;
+  position: fixed;
+  background-color: transparent;
   backdrop-filter: blur(10px);
+  z-index: 999;
+}
+
+.navbar {
+  width: 70vw;
+  height: 8vh;
+  margin: 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-
-/* .navbar::after {
-    background-image: url(./assets/Mintlify_idjZ0zw5qA_2.jpeg);
-} */
 
 .logo {
   height: 100%;
@@ -104,12 +103,13 @@ nav,
 
 .nav-cta button:last-child:hover {
   background-color: #aaa;
+  transition: 0.3s ease;
 }
 
 /***************** hero section start ************/
 
 .docs {
-  padding: 3rem 0 6rem;
+  padding: 5rem 0 5rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -151,6 +151,11 @@ nav,
   }
 }
 
+.docs-block:hover {
+  cursor: pointer;
+  background-color: lab(100% 0.01 -0.01 / 0.078);
+}
+
 .docs h1 {
   width: 60%;
   font-size: 3.4em;
@@ -165,7 +170,7 @@ nav,
 }
 
 .hero-cta {
-  background-color: lab(100% 0 0 / 0.15);
+  background-color: lab(100% 0.01 -0.01 / 0.053);
   color: lab(100% 0 0);
   padding: 0.3rem 0.3rem 0.3rem 0.4rem;
   border-radius: 1.8em;
@@ -189,6 +194,11 @@ nav,
   padding: 0.5rem 1rem;
   border-radius: 1.8em;
   border: none;
+  cursor: pointer;
+}
+
+.startnow:hover {
+  background-color: #c5c4c4;
 }
 
 .hero-img {
@@ -329,6 +339,12 @@ nav,
   font-weight: 400;
   font-size: 1rem;
   font: "InterVariable";
+}
+
+.explr-cta:hover {
+  cursor: pointer;
+  background-color: #aaa;
+  transition: 0.3s ease;
 }
 
 .comp-divs {
@@ -594,10 +610,22 @@ a:hover {
     border-radius: 1.8em;
   }
 
+  button:first-child:hover {
+    cursor: pointer;
+    background-color: #aaa;
+    transition: 0.3s ease;
+  }
+
   button:last-child {
     color: lab(100% 0 0);
     background-color: #000;
     border: 1px solid #222526;
+  }
+
+  button:last-child:hover {
+    cursor: pointer;
+    background-color: lab(100 0 0 / 0.05);
+    transition: 0.3s ease;
   }
 }
 
@@ -605,10 +633,9 @@ a:hover {
   margin: 5rem 0;
   display: grid;
   grid-template-columns: 1fr 1fr;
-
-  :first-child {
-    border-right: 1px solid #222526;
-  }
+}
+.first-prc {
+  border-right: 1px solid #222526;
 }
 
 .price {
@@ -652,25 +679,41 @@ hr {
 }
 
 .footer-block {
-  padding: 4rem 0;
+  padding: 2.5rem 0 4rem;
   border: 1px solid #222526;
   border-top: none;
 }
 
 .footer-head {
-  padding: 1rem 2rem;
+  padding: 1rem 2rem 1.2rem;
   display: flex;
   justify-content: space-between;
 
   .socials {
     display: flex;
     gap: 1rem;
+    cursor: pointer;
+  }
+
+  .social svg {
+    width: 22px;
+    height: 22px;
+    cursor: pointer;
+  }
+
+  .social svg path {
+    fill: lab(100% 0.01 -0.01 / 0.327);
+    transition: fill 0.3s ease;
+  }
+
+  .social:hover svg path {
+    fill: #aaa;
   }
 }
 
 .links-block {
   width: 100%;
-  padding: 3rem 2rem;
+  padding: 3rem 2rem 5rem;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
 
@@ -705,5 +748,51 @@ hr {
     padding: 0.3rem 0.6rem;
     border-radius: 1em;
     background: lab(100 0 0 / 0.05);
+    transition: 0.3s ease;
   }
+}
+
+.org {
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+
+  .soc-Pic img {
+    width: 4rem;
+    border-radius: 50%;
+  }
+}
+
+.last-div {
+  padding: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-self: center;
+}
+
+.status, .theme {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.ring {
+  width: 10px;
+  height: 10px;
+  background-color: #18e299;
+  padding: 0.2rem;
+  border-radius: 50%;
+}
+
+.status, .theme {
+  background-color: lab(100 0 0 / 0.05);
+  padding: 0.5rem 1rem;
+  border-radius: 1.8rem;
+  font-size: 0.85em;
+}
+
+.last-div p {
+  color: lab(100 0 0 / 0.6);
+  font-size: 0.85em;
 }
