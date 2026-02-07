@@ -1,4 +1,4 @@
-# Cursor Landing Page
+# Mintlify Landing Page
 
 A Mintlify landing page created as part of the Chai Code Web Dev Cohort 2026 assignments.
 
@@ -13,7 +13,7 @@ Created a clone of Mintlify landing page using HTML and raw CSS. Lots of things 
 
 ## 🎨 Fonts And Colors
 
-- Font: CursorGothic_Regular
+- Font: InterVariable
 
 - Colors:
     - Background: `#08090a`
@@ -32,7 +32,7 @@ Follow these steps to run the project locally:
 2. Navigate to the assignment folder
 
     ```bash
-    cd chai-code-webdev-cohort-2026/Assignments/02_Mintlify_Landing_Page
+    cd chai-code-webdev-cohort-2026/Assignments/03_Mintlify_Landing_Page
     ```
 
 3. Open index.html in your browser
