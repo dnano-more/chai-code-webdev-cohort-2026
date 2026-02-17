@@ -54,3 +54,17 @@ console.log(Array.isArray("hellow"))  // false
 // 4. Non Mutating: concat, slice, flat, flatmap [1, 2, 3, [5, 6]]
 // 5. Searching includes
 // 6. Array.isArray()
+
+console.log("----------------------------------")
+const arr = ["dnano", "harsh"];
+console.log(0 in arr); // true
+console.log(1 in arr); // true
+
+console.log("jab 2 index access karoge to element present nahi hain array me to phir property bhi nahi hogi isliye false milega");
+console.log(2 in arr); // false
+
+console.log("----------------------------------")
+
+console.log(friends)
+console.log("Upar wale array ka 2nd index khali hain to agar access karne ki koshish karoge to false hoga result")
+console.log(2 in arr); // false

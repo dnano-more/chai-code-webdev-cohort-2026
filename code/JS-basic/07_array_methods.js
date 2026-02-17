@@ -68,3 +68,34 @@ const grouped = orders.reduce(
 );
 
 console.log(grouped);
+
+
+// Gotchas
+
+const ticketNumbers = [100, 20, 10, 23, 9, 56];
+const sorted = [...ticketNumbers].sort();  // [ 10, 100, 20, 23, 56, 9 ]
+
+// acending oreder
+const acendingSort = [...ticketNumbers].sort((a, b) => a - b);  // [ 9, 10, 20, 23, 56, 100 ]
+
+// acending oreder
+const decendingSort = [...ticketNumbers].sort((a, b) => b - a);  // [ 9, 10, 20, 23, 56, 100 ]
+
+
+const kitchenOrders = [
+  { dish: "Pasta Carbonara", price: 14, spicy: false, qty: 2 },
+  { dish: "Dragon Ramen", price: 12, spicy: true, qty: 1 },
+  { dish: "Caesar Salad", price: 9, spicy: false, qty: 3 },
+  { dish: "Inferno Wings", price: 11, spicy: true, qty: 2 },
+  { dish: "Truffle Risotto", price: 18, spicy: false, qty: 1 },
+];
+
+const mildReport = kitchenOrders
+  .filter(order => !order.spicy)
+  .map(order => ({
+    dishOrder: order.dish,
+    total: order.price * order.qty
+  }))
+  // .sort((a, b) => a -b)
+  .toSorted((a, b) => a.total - b.total)
+  console.log(mildReport);
