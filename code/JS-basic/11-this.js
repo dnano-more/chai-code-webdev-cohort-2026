@@ -17,6 +17,14 @@ function ranvirWithScript() {
 console.log(ranvirWithScript()); // current object me this nahi mila to global ko point karega. global obj return hoga.
 // output: Object [global] { ... }
 
+ranvirWithArrowFunc = () => {
+  return this;
+}
+console.log("arrow function returning this node env: ",ranvirWithArrowFunc());
+// output: {}
+// Arrow function me surrounding scope ka this use hota hai, aur surrounding scope me this empty object hain. isliye output {} milta hain.
+// browser me arrow function me this window ko point karega, output bhi window object hoga.
+
 // Interview Gotcha
 function ranvirWithNoScript() {
   "use strict"; // directive
