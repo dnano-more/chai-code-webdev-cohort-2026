@@ -91,3 +91,52 @@ A collection of blogs covering Git fundamentals, basic networking concepts, and 
 🔗 Link: https://dnano.hashnode.dev/css-selectors-101-targeting-elements-with-precision
 
 ---
+## JavaScript Blogs
+
+### 1. Understanding Variables and Data Types in JavaScript  
+🔗 Link: https://dnano.hashnode.dev/understanding-variables-and-data-types-in-javascript  
+
+---
+
+### 2. JavaScript Operators Explained  
+🔗 Link: https://dnano.hashnode.dev/javascript-operators-explained  
+
+---
+
+### 3. Control Flow in JavaScript: if-else and switch Explained  
+🔗 Link: https://dnano.hashnode.dev/control-flow-in-javascript-if-else-and-switch-explained  
+
+---
+
+### 4. Function Declaration vs Function Expression  
+🔗 Link: https://dnano.hashnode.dev/function-declaration-vs-function-expression  
+
+---
+
+### 5. Arrow Functions in JavaScript Explained: Syntax, Examples, and Implicit Return  
+🔗 Link: https://dnano.hashnode.dev/arrow-functions-in-javascript-explained-syntax-examples-and-implicit-return  
+
+---
+
+### 6. Understanding Arrays in JavaScript  
+🔗 Link: https://dnano.hashnode.dev/understanding-arrays-in-javascript  
+
+---
+
+### 7. Array Methods You Must Know  
+🔗 Link: https://dnano.hashnode.dev/array-methods-you-must-know  
+
+---
+
+### 8. Understanding Objects in JavaScript  
+🔗 Link: https://dnano.hashnode.dev/understanding-objects-in-javascript  
+
+---
+
+### 9. Understanding this, call, apply, and bind in JavaScript  
+🔗 Link: https://dnano.hashnode.dev/understanding-this-call-apply-and-bind-in-javascript  
+
+---
+
+### 10. Understanding Object-Oriented Programming in JavaScript  
+🔗 Link: https://dnano.hashnode.dev/understanding-object-oriented-programming-in-javascript  
