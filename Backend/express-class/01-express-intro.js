@@ -87,8 +87,76 @@ function block_1_basicServer() {
   });
 }
 
+function block_2_response(){
+  return new Promise((resolve) => {
+    const app = express();
+    app.use(express.json());
+
+    app.get('/text', (req, res) => {
+      res.send('Hellow from chaicode')
+    });
+
+    app.get('/json', (req, res) => {
+      res.json({
+        framework: 'express',
+        version: '6.1.1'
+      })
+    });
+
+    app.get('/not-found', (req, res) => {
+      res.status(404).json({
+        error: 'Page not found'
+      })
+    });
+
+    app.get('/health', (req, res) => {
+      res.sendStatus(200)
+    })
+
+    app.get('/old-menu', (req, res) => {
+      //add entry in DB to see how many users are still visiting old route
+      res.redirect(301, '/new-menu')
+    });
+
+    app.get('/xml', (req, res) => {
+      res.type('application/xml').send('<dish> <name>Biryani</name></dish>')
+    });
+
+    app.get('/custom-headers', (req, res) => {
+      res.set('X-Powered-By', 'Chaicode');
+      res.set('X-Developer', 'Dnano More'); 
+      res.json({
+        message: 'Custom header set'
+      })
+    });
+
+    app.get('/no-content', (req, res) => {
+      res.status(204).end()
+    });
+
+    const server = app.listen(0, async () => {
+      const port = server.address().port;
+      const base = `http://127.0.0.1:${port}`;
+
+      try {
+        const res = await fetch(`${base}/response`);
+        const data = await res.json();
+        console.log("GET /response", JSON.stringify(data));
+      } catch (error) {
+        console.error("Error:", error);
+      }
+
+      server.close(() => {
+        console.log("Block 2 served...");
+        resolve();
+      });
+    });
+  });
+}
+
 async function main() {
   await block_1_basicServer();
+  await block_2_response();
 
   process.exit();
 }
