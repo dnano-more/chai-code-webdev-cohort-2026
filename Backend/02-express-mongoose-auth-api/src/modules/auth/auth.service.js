@@ -1,5 +1,5 @@
 import ApiError from "../../common/utils/api-error.js"
-import { generateAccessToken, generateRefreshToken, generateResetToken } from "../../common/utils/jwt.utils.js"
+import { generateAccessToken, generateRefreshToken, generateResetToken, verifyRefreshToken } from "../../common/utils/jwt.utils.js"
 import User from "./auth.model.js"
 
 const hashToken = (token) => crypto.createHash("sha256").update(token).digest("hex");
@@ -52,8 +52,68 @@ const login = async ({email, password}) => {
     const userObj = user.toObject()
     delete userObj.password
     delete userObj.refreshToken
-
+    
     return {user: userObj, accessToken, refreshToken}
 }
 
-export {register}
+const refresh = async () => {
+    if(!token) throw ApiError.unauthorized("Refresh token missing")
+        const decoded = verifyRefreshToken(token)
+    
+    const user = await User.findById(decoded.id).select("+refreshToken");
+    if(!user) throw ApiError.unauthorized("User not found")
+        
+    if(user.refreshToken !== hashToken(token)) {
+        throw ApiError.unauthorized("Invalid refresh token")
+    }
+        
+    const accessToken = generateAccessToken({id: user._id, role: user.role})
+    const refreshToken = generateRefreshToken({id: user._id})
+        
+    user.refreshToken = hashToken(refreshToken)
+    await user.save({validateBeforeSave: false})
+        
+    const userObj = user.toObject()
+    delete userObj.password
+    delete userObj.refreshToken
+
+    return {user: userObj, accessToken, refreshToken};
+}
+
+const logout = async (userId) => {
+    // const user = await User.findById(userId);
+    // if (!user) throw ApiError.unauthorized("User not found");
+
+    // user.refreshToken = undefined;
+    // await user.save({ validateBeforeSave: false });
+
+    await User.findByIdAndUpdate(userId, {refreshToken: null})
+}
+
+const forgotPassword = async (email) => {
+    const user = await User.findOne({email})
+    if(!user) throw ApiError.notfound("No account with that email")
+
+    const {rawToken, hashedToken} = generateResetToken()
+    user.resetPasswordToken = hashedToken
+    user.resetPasswordExpires = Date.now() + 15 * 60 * 1000
+
+    await user.save();
+
+    //TODO: mail bhejo
+}
+
+const resetPassword = async (token, newPassword) => {
+    const hashedToken = hashToken(token)
+    const user = await User.findOne({resetPasswordToken: hashedToken, resetPasswordExpires: {$gt: Date.now()}})
+    if(!user) throw ApiError.badRequest("Invalid or expired token") 
+
+    user.password = newPassword
+    user.resetPasswordToken = undefined
+    user.resetPasswordExpires = undefined
+    await user.save()
+
+    
+}
+    
+export {register, login, refresh, logout, forgotPassword, resetPassword}
