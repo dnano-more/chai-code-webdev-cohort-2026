@@ -113,9 +113,13 @@ const resetPassword = async (token, newPassword) => {
     user.password = newPassword
     user.resetPasswordToken = undefined
     user.resetPasswordExpires = undefined
-    await user.save()
+    await user.save()   
+}
 
-    
+const getMe = async (userId) => {
+    const user = User.findById(userId);
+    if(!user) throw ApiError.notfound("User not found");
+    return user;
 }
     
 export {register, login, refresh, logout, forgotPassword, resetPassword}
