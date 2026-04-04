@@ -8,8 +8,9 @@ import { authenticate } from "./auth.middleware.js";
 const router = Router()
 
 router.post("/register", validate(RegisterDto), controller.register)
-router.post("/login", validate(LoginDto), controller.logout);
-router.post("/logout", authenticate, controller.login);
+router.post("/login", validate(LoginDto), controller.login);
+router.post("/logout", authenticate, controller.logout);
 router.get("/me", authenticate, controller.getMe)
+router.post("/verify-email", controller.verifyEmail)
 
 export default router

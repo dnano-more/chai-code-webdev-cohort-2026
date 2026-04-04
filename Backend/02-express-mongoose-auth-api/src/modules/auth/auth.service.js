@@ -1,3 +1,4 @@
+import { sendVerificationEmail } from "../../common/config/email.js";
 import ApiError from "../../common/utils/api-error.js"
 import { generateAccessToken, generateRefreshToken, generateResetToken, verifyRefreshToken } from "../../common/utils/jwt.utils.js"
 import User from "./auth.model.js"
@@ -20,7 +21,11 @@ const register = async ({name, email, password, role}) => {
     })
 
     //TODO: send an email to user with token: rawToken
-
+    try {
+        await sendVerificationEmail(email, token)
+    } catch (error) {
+       console.error("Error sending verification email", error); 
+    }
 
     const userObj = user.toObject()
     delete userObj.password
@@ -116,10 +121,32 @@ const resetPassword = async (token, newPassword) => {
     await user.save()   
 }
 
+const verifyEmail = async (token) => {
+    const hashedToken = hashToken(token);
+    const user = await User.findOne({
+        verificationToken: hashedToken,
+        verificationTokenExpires: { $gt: Date.now() }
+    }).select("+verificationToken");
+
+    if(!user) throw ApiError.badRequest("Invalid or expired token");
+
+    if (user.isVerified) {
+        throw ApiError.badRequest("User already verified");
+    }
+
+    user.isVerified = true;
+    user.verificationToken = undefined;
+    user.verificationTokenExpires = undefined;
+
+    await user.save();
+    
+    return user;
+}
+
 const getMe = async (userId) => {
     const user = User.findById(userId);
     if(!user) throw ApiError.notfound("User not found");
     return user;
 }
     
-export {register, login, refresh, logout, forgotPassword, resetPassword}
+export {register, login, refresh, logout, forgotPassword, resetPassword, verifyEmail, getMe}

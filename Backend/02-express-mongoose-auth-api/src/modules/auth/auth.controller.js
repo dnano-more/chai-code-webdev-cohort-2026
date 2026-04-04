@@ -24,9 +24,14 @@ const logout = async (req, res) => {
     apiResponse.ok(res, "Logout Success")
 }
 
+const verifyEmail = async (req, res) => {
+    const user = await authService.verifyEmail(req.body.token)
+    apiResponse.ok(res, "Email verified successfully", user)
+}
+
 const getMe = async(req, res) => {
     const user = await authService.getMe(req.user.id);
     apiResponse.ok(res, "User Profile", user)
 }
 
-export {register, login, logout, getMe}
+export {register, login, logout, verifyEmail, getMe}
