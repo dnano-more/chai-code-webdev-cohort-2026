@@ -11,7 +11,8 @@ const login = async (req, res) => {
 
     res.cookie("refreshToken", refreshToken, {
         httpOnly: true,
-        secure: true,
+        secure: process.env.NODE_ENV === "production",
+        sameSite: "lax",
         maxAge: 7 * 24 * 60 * 60 * 1000 // 7 days
     })
 
@@ -20,9 +21,24 @@ const login = async (req, res) => {
 
 const logout = async (req, res) => {
     await authService.logout(req.user.id)
-    res.clearCookie("refreshToken")
+    res.clearCookie("refreshToken", {
+        httpOnly: true,
+        secure: process.env.NODE_ENV === "production",
+        sameSite: "lax",
+    })
     apiResponse.ok(res, "Logout Success")
 }
+
+const refresh = async (req, res) => {
+  const token = req.cookies.refreshToken;
+
+  if (!token) {
+    throw ApiError.unauthorized("Refresh token missing");
+  }
+
+  const data = await authService.refresh(token);
+  apiResponse.ok(res, "Token refreshed", data);
+};
 
 const verifyEmail = async (req, res) => {
     const user = await authService.verifyEmail(req.body.token)
@@ -34,4 +50,4 @@ const getMe = async(req, res) => {
     apiResponse.ok(res, "User Profile", user)
 }
 
-export {register, login, logout, verifyEmail, getMe}
+export {register, login, logout, refresh, verifyEmail, getMe}

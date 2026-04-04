@@ -3,6 +3,7 @@ import * as controller from "./auth.controller.js"
 import validate from "../../common/middleware/validate.middleware.js"
 import RegisterDto from "./dto/register.dto.js"
 import LoginDto from "./dto/login.dto.js";
+import VerifyEmailDto from "./dto/verifyEmail.dto.js";
 import { authenticate } from "./auth.middleware.js";
 
 const router = Router()
@@ -10,7 +11,8 @@ const router = Router()
 router.post("/register", validate(RegisterDto), controller.register)
 router.post("/login", validate(LoginDto), controller.login);
 router.post("/logout", authenticate, controller.logout);
+router.post("/refresh", controller.refresh)
 router.get("/me", authenticate, controller.getMe)
-router.post("/verify-email", controller.verifyEmail)
+router.post("/verify-email", validate(VerifyEmailDto), controller.verifyEmail)
 
 export default router

@@ -17,19 +17,19 @@ const register = async ({name, email, password, role}) => {
         email: email,
         password: password,
         role: role,
-        varificationToken: hashedToken
+        verificationToken: hashedToken
     })
 
     //TODO: send an email to user with token: rawToken
     try {
-        await sendVerificationEmail(email, token)
+        await sendVerificationEmail(email, "Verify Email", rawToken)
     } catch (error) {
        console.error("Error sending verification email", error); 
     }
 
     const userObj = user.toObject()
     delete userObj.password
-    delete userObj.varificationToken
+    delete userObj.verificationToken
         
     return userObj
 }
@@ -63,7 +63,7 @@ const login = async ({email, password}) => {
     return {user: userObj, accessToken, refreshToken}
 }
 
-const refresh = async () => {
+const refresh = async (token) => {
     if(!token) throw ApiError.unauthorized("Refresh token missing")
         const decoded = verifyRefreshToken(token)
     
@@ -139,7 +139,7 @@ const verifyEmail = async (token) => {
     user.verificationTokenExpires = undefined;
 
     await user.save();
-    
+
     return user;
 }
 
