@@ -1,0 +1,71 @@
+erDiagram
+    CUSTOMERS ||--o{ ORDERS : places
+    ORDERS ||--|{ ORDER_ITEMS : contains
+    PRODUCT_VARIANTS ||--o{ ORDER_ITEMS : used_in
+    PRODUCTS ||--o{ PRODUCT_VARIANTS : has
+    ORDERS ||--o| PAYMENTS : settles
+    ORDERS ||--o| SHIPPING : delivers
+
+    CUSTOMERS {
+        int customer_id PK
+        string ig_handle
+        string whatsapp_number
+        string full_name
+        string address
+        datetime created_at
+    }
+
+    PRODUCTS {
+        int product_id PK
+        string name
+        string description
+        string category
+        string product_type
+        float base_price
+        datetime created_at
+    }
+
+    PRODUCT_VARIANTS {
+        int variant_id PK
+        int product_id FK
+        string size
+        string color
+        string condition
+        int stock_quantity
+        boolean is_unique
+    }
+
+    ORDERS {
+        int order_id PK
+        int customer_id FK
+        date order_date
+        string order_status
+    }
+
+    ORDER_ITEMS {
+        int order_item_id PK
+        int order_id FK
+        int variant_id FK
+        int quantity
+        float unit_price
+    }
+
+    PAYMENTS {
+        int payment_id PK
+        int order_id FK
+        float amount
+        string method
+        string status
+        datetime payment_date
+    }
+
+    SHIPPING {
+        int shipping_id PK
+        int order_id FK
+        string address
+        string courier_name
+        string tracking_number
+        string status
+        datetime shipped_date
+        datetime delivered_date
+    }
