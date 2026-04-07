@@ -1,0 +1,112 @@
+erDiagram
+    direction LR
+
+    USERS ||--o| TRAINERS : is_a
+    USERS ||--o| CLIENTS : is_a
+
+    TRAINERS ||--o{ PLANS : creates
+    CLIENTS ||--o{ SUBSCRIPTIONS : purchases
+    PLANS ||--o{ SUBSCRIPTIONS : enrolled_in
+
+    SUBSCRIPTIONS ||--o{ PAYMENTS : generates
+    SUBSCRIPTIONS ||--o{ CHECK_INS : tracks
+
+    TRAINERS ||--o{ SESSIONS : conducts
+    CLIENTS ||--o{ SESSIONS : attends
+
+    CHECK_INS ||--|| PROGRESS_LOGS : records
+    CHECK_INS ||--o{ TRAINER_FEEDBACK : receives
+    TRAINERS ||--o{ TRAINER_FEEDBACK : writes
+
+
+    USERS {
+        int user_id PK
+        string email
+        string password_hash
+        string full_name
+        string role
+        timestamp created_at
+    }
+
+    TRAINERS {
+        int trainer_id PK
+        int user_id FK
+        string specialization
+        text bio
+        int experience_years
+    }
+
+    CLIENTS {
+        int client_id PK
+        int user_id FK
+        date date_of_birth
+        string fitness_goals
+        decimal height_cm
+    }
+
+    PLANS {
+        int plan_id PK
+        int trainer_id FK
+        string title
+        text description
+        decimal price
+        int duration_days
+        string plan_type
+    }
+
+    SUBSCRIPTIONS {
+        int subscription_id PK
+        int client_id FK
+        int plan_id FK
+        date start_date
+        date end_date
+        string status
+    }
+
+    PAYMENTS {
+        int payment_id PK
+        int subscription_id FK
+        decimal amount
+        string payment_method
+        string payment_status
+        string transaction_id
+        timestamp payment_date
+    }
+
+    SESSIONS {
+        int session_id PK
+        int trainer_id FK
+        int client_id FK
+        datetime scheduled_at
+        int duration_minutes
+        string session_type
+        string status
+    }
+
+    CHECK_INS {
+        int checkin_id PK
+        int subscription_id FK
+        int client_id FK
+        int trainer_id FK
+        date checkin_date
+        text client_notes
+    }
+
+    PROGRESS_LOGS {
+        int log_id PK
+        int checkin_id FK
+        decimal weight_kg
+        decimal body_fat_pct
+        decimal chest_cm
+        decimal waist_cm
+        decimal hips_cm
+        string photo_url
+    }
+
+    TRAINER_FEEDBACK {
+        int feedback_id PK
+        int checkin_id FK
+        int trainer_id FK
+        text feedback_text
+        timestamp created_at
+    }
