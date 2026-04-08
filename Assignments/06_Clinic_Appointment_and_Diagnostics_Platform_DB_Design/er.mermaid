@@ -1,0 +1,94 @@
+erDiagram
+    direction LR
+
+    %% Core Relationships
+    PATIENTS ||--o{ APPOINTMENTS : books
+    DOCTORS ||--o{ APPOINTMENTS : attends
+    SPECIALTIES ||--o{ DOCTORS : categorizes
+
+    %% Appointment to Consultation
+    APPOINTMENTS |o--o| CONSULTATIONS : converts_to
+    PATIENTS ||--o{ CONSULTATIONS : undergoes
+    DOCTORS ||--o{ CONSULTATIONS : conducts
+
+    %% Diagnostics Flow
+    CONSULTATIONS ||--o{ PRESCRIBED_TESTS : orders
+    DIAGNOSTIC_TESTS ||--o{ PRESCRIBED_TESTS : includes
+    PRESCRIBED_TESTS ||--|| REPORTS : generates
+
+    %% Payments
+    CONSULTATIONS ||--o{ PAYMENTS : billed_for
+    PATIENTS ||--o{ PAYMENTS : makes
+
+
+    %% ===================== TABLES =====================
+
+    PATIENTS {
+        int patient_id PK
+        string name
+        date dob
+        string contact_number
+        timestamp created_at
+    }
+
+    DOCTORS {
+        int doctor_id PK
+        string name
+        int specialty_id FK
+        int experience_years
+    }
+
+    SPECIALTIES {
+        int specialty_id PK
+        string name
+    }
+
+    APPOINTMENTS {
+        int appointment_id PK
+        int patient_id FK
+        int doctor_id FK
+        datetime scheduled_at
+        string status
+        string reason
+    }
+
+    CONSULTATIONS {
+        int consultation_id PK
+        int appointment_id FK
+        int patient_id FK
+        int doctor_id FK
+        date visit_date
+        text clinical_notes
+        string diagnosis
+    }
+
+    DIAGNOSTIC_TESTS {
+        int test_id PK
+        string test_name
+        decimal price
+    }
+
+    PRESCRIBED_TESTS {
+        int prescription_id PK
+        int consultation_id FK
+        int test_id FK
+        string status
+    }
+
+    REPORTS {
+        int report_id PK
+        int prescription_id FK
+        text findings
+        string file_path
+        datetime generated_at
+    }
+
+    PAYMENTS {
+        int payment_id PK
+        int consultation_id FK
+        int patient_id FK
+        decimal total_amount
+        string payment_method
+        string status
+        datetime paid_at
+    }
