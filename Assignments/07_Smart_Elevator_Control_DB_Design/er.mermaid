@@ -1,0 +1,99 @@
+erDiagram
+
+    BUILDING {
+        int building_id PK
+        string name
+        string location
+        datetime created_at
+    }
+
+    FLOOR {
+        int floor_id PK
+        int building_id FK
+        int floor_number
+    }
+
+    ELEVATOR_SHAFT {
+        int shaft_id PK
+        int building_id FK
+        int shaft_number
+    }
+
+    ELEVATOR {
+        int elevator_id PK
+        int building_id FK
+        int shaft_id FK
+        int elevator_number
+        int capacity
+    }
+
+    ELEVATOR_FLOOR_SERVICE {
+        int id PK
+        int elevator_id FK
+        int floor_id FK
+    }
+
+    FLOOR_REQUEST {
+        int request_id PK
+        int floor_id FK
+        string direction
+        datetime requested_at
+        string status
+    }
+
+    RIDE_ASSIGNMENT {
+        int assignment_id PK
+        int request_id FK
+        int elevator_id FK
+        datetime assigned_at
+    }
+
+    RIDE_LOG {
+        int ride_id PK
+        int elevator_id FK
+        int request_id FK
+        int start_floor_id FK
+        int end_floor_id FK
+        datetime start_time
+        datetime end_time
+        string status
+    }
+
+    ELEVATOR_STATUS {
+        int status_id PK
+        int elevator_id FK
+        string status
+        datetime updated_at
+    }
+
+    MAINTENANCE {
+        int maintenance_id PK
+        int elevator_id FK
+        datetime start_time
+        datetime end_time
+        string description
+        string status
+    }
+
+    %% Relationships
+
+    BUILDING ||--o{ FLOOR : has
+    BUILDING ||--o{ ELEVATOR : contains
+    BUILDING ||--o{ ELEVATOR_SHAFT : has
+
+    ELEVATOR_SHAFT ||--|| ELEVATOR : houses
+
+    ELEVATOR ||--o{ ELEVATOR_FLOOR_SERVICE : serves
+    FLOOR ||--o{ ELEVATOR_FLOOR_SERVICE : accessible_by
+
+    FLOOR ||--o{ FLOOR_REQUEST : generates
+
+    FLOOR_REQUEST ||--|| RIDE_ASSIGNMENT : assigned_to
+    ELEVATOR ||--o{ RIDE_ASSIGNMENT : handles
+
+    ELEVATOR ||--o{ RIDE_LOG : completes
+    FLOOR_REQUEST ||--o{ RIDE_LOG : results_in
+
+    ELEVATOR ||--o{ ELEVATOR_STATUS : has
+
+    ELEVATOR ||--o{ MAINTENANCE : undergoes
