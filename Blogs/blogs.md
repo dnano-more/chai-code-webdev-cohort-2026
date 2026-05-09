@@ -140,3 +140,72 @@ A collection of blogs covering Git fundamentals, basic networking concepts, and 
 
 ### 10. Understanding Object-Oriented Programming in JavaScript  
 🔗 Link: https://dnano.hashnode.dev/understanding-object-oriented-programming-in-javascript  
+
+### 11. Template Literals in JavaScript
+🔗 Link: https://dnano.hashnode.dev/template-literals-in-javascript
+
+### 12. Understanding the this Keyword in JavaScript
+🔗 Link: https://dnano.hashnode.dev/understanding-the-this-keyword-in-javascript
+
+### 13. The new Keyword in JavaScript
+🔗 Link: https://dnano.hashnode.dev/the-new-keyword-in-javascript
+
+### 14. Destructuring in JavaScript
+🔗 Link: https://dnano.hashnode.dev/destructuring-in-javascript
+
+### 15. Spread vs Rest Operators in JavaScript
+🔗 Link: https://dnano.hashnode.dev/spread-vs-rest-operators-in-javascript
+
+### 16. Array Flattening in JavaScript
+🔗 Link: https://dnano.hashnode.dev/array-flattening-in-javascript
+
+### 17. JavaScript Promises Explained for Beginners
+🔗 Link: https://dnano.hashnode.dev/javascript-promises-explained-for-beginners
+
+### 18. Callbacks in JavaScript: Why They Exist
+🔗 Link: https://dnano.hashnode.dev/callbacks-in-javascript-why-they-exist
+
+### 19. Mastering String and Array Methods in JavaScript (By Building Them Yourself)
+🔗 Link: https://dnano.hashnode.dev/mastering-string-and-array-methods-in-javascript-by-building-them-yourself
+
+### 20. Synchronous vs Asynchronous JavaScript
+🔗 Link: https://dnano.hashnode.dev/synchronous-vs-asynchronous-javascript
+
+### 21. Map and Set in JavaScript
+🔗 Link: https://dnano.hashnode.dev/map-and-set-in-javascript
+
+### 22. JavaScript Modules: Import and Export Explained
+🔗 Link: JavaScript Modules: Import and Export Explained
+
+### 23. Error Handling in JavaScript: Try, Catch, Finally
+🔗 Link: https://dnano.hashnode.dev/error-handling-in-javascript-try-catch-finally
+
+---
+## NodeJs Blogs
+
+### 01. What is Node.js? JavaScript on the Server Explained
+🔗 Link: https://dnano.hashnode.dev/what-is-node-js-javascript-on-the-server-explained
+
+### 02. Why Node.js is Perfect for Building Fast Web Applications
+🔗 Link: https://dnano.hashnode.dev/why-node-js-is-perfect-for-building-fast-web-applications
+
+### 03. Blocking vs Non-Blocking Code in Node.js
+🔗 Link: https://dnano.hashnode.dev/blocking-vs-non-blocking-code-in-node-js
+
+### 04. Async Code in Node.js: Callbacks and Promises
+🔗 Link: https://dnano.hashnode.dev/async-code-in-node-js-callbacks-and-promises
+
+### 05. The Node.js Event Loop Explained
+🔗 Link: https://dnano.hashnode.dev/the-node-js-event-loop-explained
+
+### 06. How Node.js Handles Multiple Requests with a Single Thread
+🔗 Link: https://dnano.hashnode.dev/how-node-js-handles-multiple-requests-with-a-single-thread
+
+### 07. Setting Up Your First Node.js Application Step-by-Step
+🔗 Link: https://dnano.hashnode.dev/setting-up-your-first-node-js-application-step-by-step
+
+---
+## Linux Internals blog
+
+### Linux File System Hunting: Exploring What Actually Powers a Linux System
+🔗 Link: https://dnano.hashnode.dev/linux-file-system-hunting-exploring-what-actually-powers-a-linux-system
