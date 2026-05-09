@@ -1,0 +1,69 @@
+erDiagram
+    %% Entities on the Left
+    VEHICLE_TYPES ||--o{ VEHICLES : categorizes
+    SPECIAL_ACCESS ||--o{ VEHICLES : grants
+    
+    %% Middle Connections
+    VEHICLES ||--o{ PARKING_SESSIONS : enters
+    PARKING_SPOTS ||--o{ PARKING_SESSIONS : assigned_to
+    
+    %% Right Side Entities
+    PARKING_ZONES ||--o{ PARKING_SPOTS : contains
+    VEHICLE_TYPES ||--o{ PARKING_SPOTS : supports
+    SPECIAL_ACCESS ||--o{ PARKING_SPOTS : reserves
+
+    %% Final Outputs
+    PARKING_SESSIONS ||--|| PARKING_TICKETS : generates
+    PARKING_SESSIONS ||--|| PAYMENTS : settles
+
+    VEHICLE_TYPES {
+        int vehicle_type_id PK
+        string type_name
+    }
+    SPECIAL_ACCESS {
+        int access_id PK
+        string access_name
+    }
+    VEHICLES {
+        int vehicle_id PK
+        string license_plate
+        string owner_name
+        int vehicle_type_id FK
+        int access_id FK
+    }
+    PARKING_ZONES {
+        int zone_id PK
+        string zone_name
+        int level_number
+    }
+    PARKING_SPOTS {
+        int spot_id PK
+        int zone_id FK
+        int supported_vehicle_type_id FK
+        int reserved_access_id FK
+        string spot_number
+        boolean is_available
+    }
+    PARKING_SESSIONS {
+        int session_id PK
+        int vehicle_id FK
+        int spot_id FK
+        datetime entry_time
+        datetime exit_time
+        string session_status
+    }
+    PARKING_TICKETS {
+        int ticket_id PK
+        int session_id FK
+        datetime issued_at
+        string qr_code
+        string ticket_status
+    }
+    PAYMENTS {
+        int payment_id PK
+        int session_id FK
+        decimal amount
+        string payment_method
+        string payment_status
+        datetime paid_at
+    }
